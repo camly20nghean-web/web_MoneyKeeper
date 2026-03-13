@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>customer</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="../public/css/style.css" rel="stylesheet">
+    
+
+</head>
+<body>
+
+    <div class="container-fluid min-vh-100 overflow-hidden">
+        <div class="row min-vh-100">
+            
+            <div class="col-lg-2 d-none d-lg-flex flex-column bg-sidebar text-white p-4">
+                
+                <div class="mb-5 mt-4">
+                    <h4 class="fw-bold">MoneyKeeper</h4>
+                </div>
+
+                <nav class="nav flex-column gap-3">
+                    <a href="dashboard.html" class="nav-link text-white bg-white-10 rounded">
+                        <i class="fa-solid fa-house me-2"></i> Tổng quan
+                    </a>
+                    <a href="transactions.html" class="nav-link text-white">
+                        <i class="fa-solid fa-money-bill-transfer me-2"></i> Giao dịch
+                    </a>
+                    <a href="budget.html" class="nav-link text-white">
+                        <i class="fa-solid fa-piggy-bank me-2"></i> Ngân sách 
+                    </a>
+                    <a href="report.html" class="nav-link text-white">
+                        <i class="fa-solid fa-chart-simple me-2"></i> Báo cáo 
+                    </a>
+                </nav>
+
+                <div class="mt-auto w-100 pt-4">
+                    <div class="bg-white bg-opacity-10 p-3 rounded-4 text-center border border-white border-opacity-25 shadow-sm">
+                        <i class="fa-solid fa-crown text-warning fs-2 mb-2"></i>
+                        <h6 class="text-white fw-bold mb-1">Gói Premium</h6>
+                        <p class="text-white-50 small mb-3" style="font-size: 0.75rem;">Mở khóa toàn bộ tính năng</p>
+                        <a href="upgrade.html" class="btn btn-warning w-100 fw-bold rounded-pill shadow-sm d-block text-decoration-none" style="background: linear-gradient(135deg, #FFD700, #F39C12); border: none; color: #855300;">
+                            Nâng cấp ngay
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="d-flex fixed-top justify-content-between align-items-center bg-sidebar text-white p-2 d-lg-none">
+                <h4 class="mb-0 fw-bold">MoneyKeeper</h4>
+                
+                <button class="btn text-white border-0 fs-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="mobileMenu" style="width: 280px;">
+                <div class="offcanvas-header border-bottom border-secondary">
+                    <h5 class="offcanvas-title fw-bold">MoneyKeeper</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                </div>
+                
+                <div class="offcanvas-body px-2 mt-3 d-flex flex-column">
+                    <nav class="nav flex-column gap-2">
+                        <a href="dashboard.html" class="nav-link text-white px-3 py-2 rounded-2 bg-white-10 fw-medium">
+                            <i class="fa-solid fa-house me-3" style="width: 20px;"></i> Tổng quan
+                        </a>
+                        <a href="transactions.html" class="nav-link text-white px-3 py-2 rounded-2">
+                            <i class="fa-solid fa-money-bill-transfer me-3" style="width: 20px;"></i> Giao dịch 
+                        </a>
+                        <a href="budget.html" class="nav-link text-white px-3 py-2 rounded-2">
+                            <i class="fa-solid fa-piggy-bank me-3" style="width: 20px;"></i> Ngân sách 
+                        </a>
+                        <a href="report.html" class="nav-link text-white px-3 py-2 rounded-2">
+                            <i class="fa-solid fa-chart-simple me-3" style="width: 20px;"></i> Báo cáo 
+                        </a>
+                    </nav>
+<!-- nâng cấp -->
+                    <div class="mt-auto pt-4">
+                        <div class="bg-warning bg-opacity-10 p-3 rounded-4 text-center border border-warning border-opacity-50">
+                            <h6 class="text-white fw-bold mb-1"><i class="fa-solid fa-crown text-warning me-2"></i>Gói Premium</h6>
+                            <a href="upgrade.html" class="btn btn-warning w-100 fw-bold rounded-pill shadow-sm d-block text-decoration-none" style="background: linear-gradient(135deg, #FFD700, #F39C12); border: none; color: #855300;">
+                                Nâng cấp ngay
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 pt-5 pt-lg-4 mt-5 mt-lg-0 col-lg-7 p-4 p-lg-5 bg-light-gray overflow-auto h-100">
+
+                <div class="mb-4">
+                    <h3 class="fw-bold">Xin chào, khách hàng!</h3>
+                    <p class="text-muted">Chào mừng bạn quay trở lại!</p>
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <div class="p-4 bg-card-balance rounded-4 shadow-sm position-relative h-100">
+                        <i class="fa-solid fa-wallet text-warning fs-3 position-absolute" style="top: 24px; right: 24px;"></i>
+
+                        <p class="text-muted mb-2 fs-6">Tổng số dư</p>
+                            <h3 class="fw-bold mb-1 text-dark">12.500.000 đ</h3>
+                            <span class="text-success fw-bold">+15%</span>
+                    </div></div>
+                    <div class="col-md-4">
+                        <div class="p-4 bg-card-income shadow-sm position-relative h-100">
+                            <i class="fa-solid fa-arrow-trend-up text-success position-absolute" style="top: 24px; right: 24px;"></i>
+                            <p class="text-muted mb-2 fs-6">Tổng thu nhập</p>
+                            <h3 class="fw-bold mb-1 text-dark">5.000.000 đ</h3>
+                            <span class="text-success fw-bold">+8%</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-4 bg-card-expense shadow-sm position-relative h-100">
+                            <i class="fa-solid fa-arrow-trend-down text-danger position-absolute" style="top: 24px; right: 24px;"></i>
+                            <p class="text-muted mb-2 fs-6">Tổng chi tiêu</p>
+                            <h3 class="fw-bold mb-1 text-dark">2.400.000 đ</h3>
+                            <span class="text-danger fw-bold">-5%</span>
+                        </div>
+                </div>
+             
+            </div>
+               <div class="bg-white p-4 rounded-4 shadow-sm mb-4">
+    
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="fw-bold mb-0">Phân tích dòng tiền</h5>
+                    
+                    <select class="form-select form-select-sm w-auto border-0 bg-light fw-bold text-dark">
+                        <option value="2026" selected>2026</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                    </select>
+                </div>
+
+                <div style="height: 280px; position: relative;">
+                    <canvas id="cashflowChart"></canvas>
+                </div>
+
+                </div>
+            </div>
+        <div class="col-12 col-lg-3 bg-white border-start p-4 p-lg-5 h-100 overflow-y-auto overflow-x-hidden">
+                <!-- avt  -->
+                <div class="dropdown mb-4">
+    <div class="d-flex align-items-center gap-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+        <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width: 45px; height: 45px;">
+            A </div>
+        <div class="d-none d-md-block text-end">
+            <h6 class="mb-0 fw-bold text-dark">Nguyễn Văn An</h6>
+            <small class="text-muted">an@gmail.com</small>
+        </div>
+    </div>
+
+    <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 mt-3" style="min-width: 220px;">
+        <li class="px-3 py-2 border-bottom mb-2">
+            <span class="d-block fw-bold text-dark">Nguyễn Văn An</span>
+            <span class="badge bg-warning text-dark rounded-pill mt-1">Premium</span>
+        </li>
+        
+        <li><a class="dropdown-item py-2 fw-medium text-secondary" href="settings.html">
+            <i class="fa-solid fa-gear fa-fw me-2"></i> Cài đặt tài khoản
+        </a></li>
+        
+        <li><hr class="dropdown-divider my-2"></li>
+        
+        <li><a class="dropdown-item py-2 fw-bold text-danger" href="login.html">
+            <i class="fa-solid fa-arrow-right-from-bracket fa-fw me-2"></i> Đăng xuất
+        </a></li>
+    </ul>
+</div>
+                <div class="bg-visa text-white p-4 rounded-4 mb-5 visa-responsive " style="height: 180px;">
+                    <p >
+                        MoneyKeeper Card
+                    </p>
+                    <h3 class="fw-bold mb-1">12.500.000 đ</h3>
+                    <p class="mb-1 opacity-75 small" style="letter-spacing: 3px;">**** **** **** 4582</p>
+                    <div class="d-flex justify-content-between align-items-start">
+                        <span class="text-uppercase fw-medium">Nguyễn Văn An</span>
+                        <h2 class="fw-bold fst-italic mb-1">VISA</h2>
+                    </div>
+                    </div>
+                <div class="d-flex mb-4">
+                    <h5>Giao dịch gần đây</h5>
+                    <a href="#" class="ms-auto text-decoration-none text-success">Xem tất cả</a>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                    <div class="bg-warning-subtle text-warning d-flex justify-content-center align-items-center rounded-3 me-3" style="width: 45px; height: 45px;">
+                        <i class="fa-solid fa-bag-shopping fs-5"></i>
+                    </div>
+                    
+                    <div class="flex-grow-1">
+                        <h6 class="mb-0 fw-bold">Starbucks Coffee</h6>
+                        <small class="text-muted">Hôm nay, 10:00</small>
+                    </div>
+                    
+                    <div class="text-danger fw-bold">
+                        -55.000 đ
+                    </div>
+                </div>
+                
+    </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const ctx = document.getElementById('cashflowChart').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'bar', // Biểu đồ dạng cột
+            data: {
+                labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
+                datasets: [
+                    {
+                        label: 'Thu nhập',
+                        data: [4.5, 4.5, 5.2, 4.5, 4.5, 6.5, 4.5, 5.8, 4.4, 4.4, 4.4, 5.5], // Số liệu giả
+                        backgroundColor: '#5726C9', // Màu tím chuẩn
+                        borderRadius: 4, // Bo tròn đầu cột
+                        barPercentage: 0.6,
+                        categoryPercentage: 0.8
+                    },
+                    {
+                        label: 'Chi tiêu',
+                        data: [3.8, 3.8, 4.5, 3.8, 3.8, 4.5, 5.8, 5.0, 3.8, 3.8, 3.8, 3.8], // Số liệu giả
+                        backgroundColor: '#DF2424', // Màu đỏ chuẩn
+                        borderRadius: 4,
+                        barPercentage: 0.6,
+                        categoryPercentage: 0.8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, // Ép biểu đồ nằm gọn trong chiều cao 280px đã set ở HTML
+                plugins: {
+                    legend: {
+                        display: false // Ẩn chú thích mặc định đi cho giống thiết kế
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + 'Tr'; // Thêm chữ "Tr" (Triệu) vào trục dọc
+                            },
+                            stepSize: 2 // Nhảy số 2Tr, 4Tr, 6Tr...
+                        },
+                        grid: {
+                            borderDash: [5, 5], // Kẻ ô ly nét đứt
+                            color: '#e0e0e0'
+                        },
+                        border: { display: false } // Bỏ đường viền trục Y
+                    },
+                    x: {
+                        grid: { display: false }, // Ẩn kẻ ô dọc cho thoáng mắt
+                        border: { display: false }
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

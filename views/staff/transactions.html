@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhân Viên</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="../../public/css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light-gray">
+
+    <div class="container-fluid min-vh-100 overflow-hidden">
+        <div class="row min-vh-100">
+            
+            <div class="col-lg-2 d-none d-lg-flex flex-column bg-sidebar-admin text-white p-4"> 
+                <div class="mb-5 mt-2">
+                    <h4 class="fw-bold text-white mb-0">MoneyKeeper</h4>
+                </div>
+
+                <nav class="nav flex-column gap-2">
+                    <a href="dashboard.html" class="nav-link text-white py-2 px-3 mb-2">
+                        <i class="fa-solid fa-house fa-fw me-1"></i> Tổng quan 
+                    </a>
+                    <a href="transactions.html" class="nav-link bg-white-10 rounded-3 text-white fw-medium py-2 px-3">
+                        <i class="fa-solid fa-money-bill-transfer fa-fw me-1"></i> Giao dịch
+                    </a>
+                    <a href="support.html" class="nav-link text-white py-2 px-3">
+                        <i class="fa-solid fa-headset fa-fw me-1"></i> Hỗ trợ
+                    </a>
+                    
+                </nav>
+            </div>
+
+            <div class="d-flex fixed-top justify-content-between align-items-center bg-sidebar-admin text-white p-3 d-lg-none">
+                <h4 class="mb-0 fw-bold">MoneyKeeper</h4>
+                <button class="btn text-white border-0 fs-4 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="offcanvas offcanvas-start bg-sidebar-admin text-white" tabindex="-1" id="mobileMenu" style="width: 280px;">
+                <div class="offcanvas-header border-bottom border-secondary">
+                    <h5 class="offcanvas-title fw-bold">MoneyKeeper</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body px-2 mt-3">
+                    <nav class="nav flex-column gap-2">
+                        <a href="dashboard.html" class="nav-link text-white px-3 py-2 rounded-3 fw-medium">
+                            <i class="fa-solid fa-house fa-fw me-2"></i> Tổng quan 
+                        </a>
+                        <a href="transactions.html" class="nav-link bg-white-10 text-white px-3 py-2 rounded-3">
+                            <i class="fa-solid fa-money-bill-transfer fa-fw me-2"></i> Giao dịch 
+                        </a>
+                        <a href="support.html" class="nav-link text-white px-3 py-2 rounded-3">
+                            <i class="fa-solid fa-headset fa-fw me-2"></i> Hỗ trợ 
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-10 p-4 p-lg-5 overflow-auto h-100 mt-4 mt-lg-0">
+                
+                <div class="mb-4 d-flex justify-content-between align-items-end flex-wrap gap-3 mt-4 mt-lg-0">
+                    <div>
+                        <h3 class="fw-bold text-dark mb-1">Quản lý giao dịch</h3>
+                        <p class="text-secondary mb-0">Duyệt và kiểm tra trạng thái thanh toán của thành viên</p>
+                    </div>
+                    <!-- avt  -->
+                     <div class="dropdown mb-4 mb-lg-5">
+    <div class="d-flex align-items-center gap-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+        <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width: 45px; height: 45px;">
+            H
+        </div>
+        
+        <div class="d-none d-md-block text-start">
+            <h6 class="mb-0 fw-bold text-dark">Thu Hà</h6>
+            <small class="text-muted">Nhân viên hỗ trợ</small>
+        </div>
+    </div>
+
+    <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 mt-3" style="min-width: 220px;">
+        
+        <li class="px-3 py-2 border-bottom mb-2">
+            <span class="d-block fw-bold text-dark">Thu Hà</span>
+            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary-subtle rounded-pill mt-1">Staff</span>
+        </li>
+        
+        <li><a class="dropdown-item py-2 fw-medium text-secondary hover-primary" href="settings.html">
+            <i class="fa-solid fa-sliders fa-fw me-2"></i> Cài đặt công việc
+        </a></li>
+        
+        <li><hr class="dropdown-divider my-2"></li>
+        
+        <li><a class="dropdown-item py-2 fw-bold text-danger hover-danger" href="../login.html">
+            <i class="fa-solid fa-arrow-right-from-bracket fa-fw me-2"></i> Đăng xuất
+        </a></li>
+    </ul>
+</div>
+                </div>
+
+                <div class="bg-white rounded-4 p-3 mb-4 border border-secondary-subtle">
+                    <div class="row align-items-center g-3">
+                        <div class="col-12 col-md-5 position-relative">
+                            <i class="fa-solid fa-magnifying-glass position-absolute text-muted" style="top: 50%; left: 25px; transform: translateY(-50%);"></i>
+                            <input type="text" class="form-control rounded-pill ps-5 py-2 bg-light border-0 shadow-none" placeholder="Tìm theo mã GD, tên, sđt...">
+                        </div>
+                        <div class="col-12 col-md-7 d-flex justify-content-md-end gap-2 overflow-x-auto text-nowrap pb-2 pb-md-0" style="scrollbar-width: none;">
+                            <button class="btn btn-dark rounded-pill px-4 fw-medium">Tất cả</button>
+                            <button class="btn bg-white border border-secondary-subtle text-muted rounded-pill px-4 fw-medium btn-filter d-flex align-items-center gap-2">
+                                Chờ duyệt <span class="badge bg-danger rounded-pill">5</span>
+                            </button>
+                            <button class="btn bg-white border border-secondary-subtle text-muted rounded-pill px-4 fw-medium btn-filter">Đã duyệt</button>
+                            <button class="btn bg-white border border-secondary-subtle text-muted rounded-pill px-4 fw-medium btn-filter">Đã hủy</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto pb-4">
+                    <div style="min-width: 1000px;">
+                        
+                        <div class="row mx-0 py-3 fw-bold text-muted mb-2 text-nowrap bg-white rounded-top-3 border border-secondary-subtle">
+                            <div class="col-2 ps-4">Mã GD & Thời gian</div>
+                            <div class="col-2">Khách hàng</div>
+                            <div class="col-2">Gói dịch vụ</div>
+                            <div class="col-2">Số tiền</div>
+                            <div class="col-2 text-center">Trạng thái</div>
+                            <div class="col-2 text-center pe-4">Hành động</div>
+                        </div>
+
+                        <div class="d-flex flex-column gap-2">
+                            
+                            <div class="row mx-0 bg-warning-subtle bg-opacity-10 py-3 align-items-center text-dark rounded-3 shadow-sm border border-warning-subtle text-nowrap row-item">
+                                <div class="col-2 ps-4">
+                                    <p class="mb-0 fw-bold text-dark">#MK9821</p>
+                                    <small class="text-muted">10:45 • Hôm nay</small>
+                                </div>
+                                <div class="col-2">
+                                    <p class="mb-0 fw-bold">Nguyễn Văn Bình</p>
+                                    <small class="text-muted">0987.xxx.123</small>
+                                </div>
+                                <div class="col-2 text-warning fw-bold">Premium 1 năm</div>
+                                <div class="col-2">
+                                    <p class="mb-0 fw-bold">499.000 đ</p>
+                                    <small class="text-muted">Techcombank</small>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-medium">Chờ duyệt</span>
+                                </div>
+                                <div class="col-2 d-flex justify-content-center gap-3 fs-4 pe-4">
+                                    <i class="fa-solid fa-circle-check text-success hover-success" style="cursor: pointer;" title="Duyệt đơn này"></i>
+                                    <i class="fa-solid fa-circle-xmark text-danger hover-danger" style="cursor: pointer;" title="Từ chối" data-bs-toggle="modal" data-bs-target="#rejectModal"></i>
+                                </div>
+                            </div>
+
+                            <div class="row mx-0 bg-warning-subtle bg-opacity-10 py-3 align-items-center text-dark rounded-3 shadow-sm border border-warning-subtle text-nowrap row-item">
+                                <div class="col-2 ps-4">
+                                    <p class="mb-0 fw-bold text-dark">#MK9820</p>
+                                    <small class="text-muted">09:15 • Hôm nay</small>
+                                </div>
+                                <div class="col-2">
+                                    <p class="mb-0 fw-bold">Trần Bảo Kiên</p>
+                                    <small class="text-muted">0912.xxx.456</small>
+                                </div>
+                                <div class="col-2 text-warning fw-bold">Premium 6 tháng</div>
+                                <div class="col-2">
+                                    <p class="mb-0 fw-bold">299.000 đ</p>
+                                    <small class="text-muted">MoMo</small>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-medium">Chờ duyệt</span>
+                                </div>
+                                <div class="col-2 d-flex justify-content-center gap-3 fs-4 pe-4">
+                                    <i class="fa-solid fa-circle-check text-success hover-success" style="cursor: pointer;" title="Duyệt đơn này"></i>
+                                    <i class="fa-solid fa-circle-xmark text-danger hover-danger" style="cursor: pointer;" title="Từ chối" data-bs-toggle="modal" data-bs-target="#rejectModal"></i>
+                                </div>
+                            </div>
+
+                            <div class="row mx-0 bg-white py-3 align-items-center text-dark rounded-3 shadow-sm border border-secondary-subtle text-nowrap row-item">
+                                <div class="col-2 ps-4">
+                                    <p class="mb-0 fw-bold text-secondary">#MK9819</p>
+                                    <small class="text-muted">15:30 • Hôm qua</small>
+                                </div>
+                                <div class="col-2">
+                                    <p class="mb-0 fw-medium">Lê Thị Hoa</p>
+                                    <small class="text-muted">0909.xxx.888</small>
+                                </div>
+                                <div class="col-2 text-secondary fw-bold">Premium 1 năm</div>
+                                <div class="col-2">
+                                    <p class="mb-0 fw-bold">499.000 đ</p>
+                                    <small class="text-muted">Vietcombank</small>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill fw-medium border border-success-subtle">Đã duyệt</span>
+                                </div>
+                                <div class="col-2 d-flex justify-content-center fs-5 pe-4">
+                                    <i class="fa-solid fa-eye text-primary hover-primary" style="cursor: pointer;" title="Xem chi tiết"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="row mx-0 bg-white py-3 align-items-center text-dark rounded-3 shadow-sm border border-secondary-subtle text-nowrap row-item">
+                                <div class="col-2 ps-4">
+                                    <p class="mb-0 fw-bold text-secondary">#MK9818</p>
+                                    <small class="text-muted">10:00 • Hôm qua</small>
+                                </div>
+                                <div class="col-2">
+                                    <p class="mb-0 fw-medium">Phạm Tuấn Anh</p>
+                                    <small class="text-muted">0934.xxx.222</small>
+                                </div>
+                                <div class="col-2 text-secondary fw-bold">Premium 6 tháng</div>
+                                <div class="col-2">
+                                    <p class="mb-0 fw-bold">299.000 đ</p>
+                                    <small class="text-muted">Chuyển khoản</small>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill fw-medium border border-danger-subtle">Đã hủy</span>
+                                </div>
+                                <div class="col-2 d-flex justify-content-center fs-5 pe-4">
+                                    <i class="fa-solid fa-eye text-secondary hover-primary" style="cursor: pointer;" title="Xem lý do hủy"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <nav aria-label="Page navigation" class="mt-4 d-flex justify-content-end">
+                    <ul class="pagination pagination-sm shadow-sm">
+                        <li class="page-item disabled"><a class="page-link text-muted border-0" href="#">Trước</a></li>
+                        <li class="page-item active"><a class="page-link bg-success border-success" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link text-dark border-0" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link text-dark border-0" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link text-success border-0 fw-medium" href="#">Sau</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="rejectModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 shadow-lg">
+                <div class="modal-header border-bottom-0 pb-0 mt-3 mx-3">
+                    <h5 class="modal-title fw-bold text-danger"><i class="fa-solid fa-triangle-exclamation me-2"></i>Từ chối giao dịch</h5>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 mx-2">
+                    <p class="text-dark mb-4">Nhập lý do hủy đơn hàng để hệ thống gửi thông báo cho khách hàng.</p>
+                    <div class="mb-4">
+                        <label class="form-label fw-medium text-muted mb-2">Lý do từ chối <span class="text-danger">*</span></label>
+                        <select class="form-select rounded-3 shadow-none">
+                            <option value="" disabled selected>-- Chọn lý do --</option>
+                            <option value="1">Chưa nhận được tiền sau 24h</option>
+                            <option value="2">Khách chuyển sai/thiếu số tiền</option>
+                            <option value="3">Sai cú pháp, không đối soát được</option>
+                            <option value="4">Lý do khác</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label fw-medium text-muted mb-2">Ghi chú thêm (Tùy chọn)</label>
+                        <textarea class="form-control rounded-3 shadow-none" rows="2" placeholder="Ví dụ: Đã refund tiền lại vào tài khoản khách..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0 pt-0 pb-4 px-4 bg-white rounded-bottom-4">
+                    <button type="button" class="btn btn-white border border-secondary-subtle rounded-pill px-4 text-muted fw-medium" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-danger rounded-pill px-4 fw-medium shadow-sm">Xác nhận Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

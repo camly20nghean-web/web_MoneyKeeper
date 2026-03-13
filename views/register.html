@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>customer</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="../public/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container-fluid min-vh-100 d-flex flex-column p-0">
+        
+        <div class="row g-0 flex-grow-1">
+            
+            <div class="col-lg-6 bg-login-image d-none d-lg-flex align-items-center justify-content-center position-relative">
+                <div class="text-center">
+                    <img src="../public/img/3D_money_bag.png" class="img-fluid login-3d-img animation-float" alt="MoneyKeeper Register">
+                    
+                </div>
+            </div>
+
+            <div class="col-lg-6 d-flex align-items-center bg-white py-5 px-5 px-lg-5 overflow-auto">
+                
+                <div class="w-100 mx-auto" style="max-width: 520px;">
+                    
+                    <h1 class="fw-bold text-teal mb-2">Tạo tài khoản</h1>
+                    <p class="text-secondary fs-5 mb-4">Hoàn toàn miễn phí và bảo mật.</p>
+
+                    <form action="">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control rounded-3" id="floatName" required placeholder="Nguyễn Văn A">
+                            <label for="floatName" class="text-muted">Họ và tên</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control rounded-3" id="floatEmail" required placeholder="name@example.com">
+                            <label for="floatEmail" class="text-muted">Địa chỉ Email</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control rounded-3" id="floatPass" required placeholder="Password">
+                            <label for="floatPass" class="text-muted">Mật khẩu</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control rounded-3" id="floatRePass" required placeholder="Confirm Password">
+                            <label for="floatRePass" class="text-muted">Nhập lại mật khẩu</label>
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                            <label class="form-check-label text-muted small" for="flexCheckDefault">
+                                Tôi đồng ý với <a href="#" class="text-teal text-decoration-none fw-bold">Điều khoản sử dụng</a> và <a href="#" class="text-teal text-decoration-none fw-bold">Chính sách bảo mật</a>.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-teal w-100 py-3 rounded-pill fw-bold text-white mb-4">
+                            Đăng ký ngay
+                        </button>
+
+                        <button type="button" class="btn btn-outline-secondary w-100 py-3 rounded-pill fw-bold d-flex align-items-center justify-content-center gap-2">
+                            <i class="fa-brands fa-google"></i> Đăng ký bằng Google
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <p class="text-muted">
+                            Bạn đã có tài khoản? 
+                            <a href="login.html" class="text-teal fw-bold text-decoration-none fs-6">Đăng nhập</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // 1. Lắng nghe khi người dùng bấm nút Submit
+    document.querySelector('form').addEventListener('submit', function(event) {
+        
+        // 2. Lấy giá trị của 2 ô mật khẩu
+        const pass = document.getElementById('floatPass').value;
+        const rePass = document.getElementById('floatRePass').value;
+
+        // 3. So sánh
+        if (pass !== rePass) {
+            // Nếu KHÔNG giống nhau:
+            
+            // a. Chặn không cho gửi form đi (quan trọng!)
+            event.preventDefault(); 
+            
+            // b. Thông báo lỗi cho người dùng
+            alert("Mật khẩu nhập lại không khớp! Vui lòng kiểm tra lại.");
+            
+            // c. Xóa trắng ô nhập lại để người dùng nhập mới
+            document.getElementById('floatRePass').value = '';
+            
+            // d. Đưa con trỏ chuột vào ô nhập lại
+            document.getElementById('floatRePass').focus();
+        }
+    });
+</script>
+</body>
+</html>

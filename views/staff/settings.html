@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cài đặt công việc - Nhân viên</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="../../public/css/style.css" rel="stylesheet">
+
+    <style>
+        /* Tùy chỉnh Menu Tab dọc cho đẹp */
+        .settings-tab .nav-link {
+            color: #6c757d;
+            border-radius: 0.5rem;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+        .settings-tab .nav-link:hover { background-color: #f8f9fa; }
+        .settings-tab .nav-link.active {
+            background-color: #e8f5e9 !important; /* Xanh nhạt */
+            color: #198754 !important; /* Xanh đậm */
+            font-weight: bold;
+        }
+        /* Chỉnh công tắc Switch bật/tắt cho mượt và đồng bộ màu */
+        .form-switch .form-check-input {
+            width: 3rem;
+            height: 1.5rem;
+            cursor: pointer;
+        }
+        .form-switch .form-check-input:checked {
+            background-color: #198754;
+            border-color: #198754;
+        }
+    </style>
+</head>
+<body class="bg-light-gray">
+
+    <div class="container-fluid min-vh-100 overflow-hidden">
+        <div class="row min-vh-100">
+            
+            <div class="col-lg-2 d-none d-lg-flex flex-column bg-sidebar-admin text-white p-4"> 
+                <div class="mb-5 mt-2">
+                    <h4 class="fw-bold text-white mb-0">MoneyKeeper</h4>
+                </div>
+
+                <nav class="nav flex-column gap-2">
+                    <a href="dashboard.html" class="nav-link text-white py-2 px-3 mb-2">
+                        <i class="fa-solid fa-house fa-fw me-1"></i> Tổng quan 
+                    </a>
+                    <a href="transactions.html" class="nav-link text-white py-2 px-3">
+                        <i class="fa-solid fa-money-bill-transfer fa-fw me-1"></i> Giao dịch
+                    </a>
+                    <a href="support.html" class="nav-link text-white py-2 px-3">
+                        <i class="fa-solid fa-headset fa-fw me-1"></i> Hỗ trợ
+                    </a>
+                </nav>
+            </div>
+            
+            <div class="d-flex fixed-top justify-content-between align-items-center bg-sidebar-admin text-white p-3 d-lg-none">
+                <h4 class="mb-0 fw-bold">MoneyKeeper</h4>
+                <button class="btn text-white border-0 fs-4 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="offcanvas offcanvas-start bg-sidebar-admin text-white" tabindex="-1" id="mobileMenu" style="width: 280px;">
+                <div class="offcanvas-header border-bottom border-secondary">
+                    <h5 class="offcanvas-title fw-bold">MoneyKeeper</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body px-2 mt-3">
+                    <nav class="nav flex-column gap-2">
+                        <a href="dashboard.html" class="nav-link text-white px-3 py-2 rounded-3 fw-medium">
+                            <i class="fa-solid fa-house fa-fw me-2"></i> Tổng quan 
+                        </a>
+                        <a href="transactions.html" class="nav-link text-white px-3 py-2 rounded-3">
+                            <i class="fa-solid fa-money-bill-transfer fa-fw me-2"></i> Giao dịch 
+                        </a>
+                        <a href="support.html" class="nav-link text-white px-3 py-2 rounded-3">
+                            <i class="fa-solid fa-headset fa-fw me-2"></i> Hỗ trợ 
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-10 p-0 d-flex flex-column flex-xl-row h-100 bg-light-gray pt-5 mt-3 pt-lg-0 mt-lg-0">
+                
+                <div class="col-12 p-4 p-lg-5 overflow-auto" style="height: 100vh;">
+                    
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-5">
+                        <div>
+                            <h3 class="fw-bold text-dark mb-1">Cài đặt công việc</h3>
+                            <p class="text-secondary mb-0">Quản lý hồ sơ hiển thị và thông báo ca trực</p>
+                        </div>
+                        
+                        <div class="dropdown">
+                            <div class="d-flex align-items-center gap-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+                                <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width: 45px; height: 45px;">
+                                    H
+                                </div>
+                                <div class="d-none d-md-block text-end">
+                                    <h6 class="mb-0 fw-bold text-dark">Thu Hà</h6>
+                                    <small class="text-muted">Nhân viên hỗ trợ</small>
+                                </div>
+                            </div>
+
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 mt-3" style="min-width: 220px;">
+                                <li class="px-3 py-2 border-bottom mb-2">
+                                    <span class="d-block fw-bold text-dark">Thu Hà</span>
+                                    <span class="badge bg-primary bg-opacity-10 text-primary border border-primary-subtle rounded-pill mt-1">Staff</span>
+                                </li>
+                                <li><a class="dropdown-item py-2 fw-medium text-success" href="settings-staff.html">
+                                    <i class="fa-solid fa-sliders fa-fw me-2"></i> Cài đặt công việc
+                                </a></li>
+                                <li><hr class="dropdown-divider my-2"></li>
+                                <li><a class="dropdown-item py-2 fw-bold text-danger hover-danger" href="login.html">
+                                    <i class="fa-solid fa-arrow-right-from-bracket fa-fw me-2"></i> Đăng xuất
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        
+                        <div class="col-12 col-lg-3">
+                            <div class="bg-white p-3 rounded-4 border border-secondary-subtle">
+                                <div class="nav flex-column nav-pills settings-tab" role="tablist" aria-orientation="vertical">
+                                    <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-profile" type="button" role="tab">
+                                        <i class="fa-regular fa-id-badge fa-fw me-2"></i> Hồ sơ hiển thị
+                                    </button>
+                                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-security" type="button" role="tab">
+                                        <i class="fa-solid fa-shield-halved fa-fw me-2"></i> Đổi mật khẩu
+                                    </button>
+                                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-notifications" type="button" role="tab">
+                                        <i class="fa-regular fa-bell fa-fw me-2"></i> Cài đặt thông báo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-9">
+                            <div class="tab-content">
+                                
+                                <div class="tab-pane fade show active" id="tab-profile" role="tabpanel">
+                                    <div class="bg-white p-4 p-lg-5 rounded-4 border border-secondary-subtle">
+                                        <h5 class="fw-bold text-dark mb-1">Hồ sơ hỗ trợ viên</h5>
+                                        <p class="text-muted mb-4 pb-3 border-bottom">Thông tin này sẽ hiển thị với khách hàng khi bạn chat hỗ trợ.</p>
+                                        
+                                        <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-4 mb-5">
+                                            <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-1" style="width: 100px; height: 100px; min-width: 100px;">
+                                                H
+                                            </div>
+                                            <div>
+                                                <div class="d-flex gap-2 mb-2">
+                                                    <button class="btn btn-outline-success rounded-pill px-4 fw-medium border-2">Tải ảnh lên</button>
+                                                    <button class="btn btn-light rounded-pill px-3 text-muted"><i class="fa-solid fa-trash"></i></button>
+                                                </div>
+                                                <small class="text-muted">Nên dùng ảnh chân dung chuyên nghiệp. Tối đa 2MB.</small>
+                                            </div>
+                                        </div>
+
+                                        <form>
+                                            <div class="row g-4">
+                                                <div class="col-12 col-md-6">
+                                                    <label class="form-label fw-medium text-muted">Tên hiển thị <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control form-control-lg rounded-3 shadow-none" value="CSKH - Thu Hà">
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <label class="form-label fw-medium text-muted">Mã nhân viên</label>
+                                                    <input type="text" class="form-control form-control-lg rounded-3 shadow-none bg-light text-muted" value="STAFF-092" readonly>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label class="form-label fw-medium text-muted">Email công việc</label>
+                                                    <input type="email" class="form-control form-control-lg rounded-3 shadow-none bg-light text-muted" value="thuha.cskh@moneykeeper.com" readonly>
+                                                    <small class="text-muted d-block mt-1">Liên hệ Admin nếu bạn cần thay đổi Email này.</small>
+                                                </div>
+                                            </div>
+                                            <div class="mt-5">
+                                                <button type="button" class="btn btn-success rounded-pill px-5 fw-bold">Lưu hồ sơ</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="tab-security" role="tabpanel">
+                                    <div class="bg-white p-4 p-lg-5 rounded-4 border border-secondary-subtle">
+                                        <h5 class="fw-bold text-dark mb-1">Bảo mật tài khoản</h5>
+                                        <p class="text-muted mb-4 pb-3 border-bottom">Đổi mật khẩu định kỳ để bảo vệ dữ liệu khách hàng.</p>
+                                        
+                                        <form>
+                                            <div class="row g-4 max-w-500">
+                                                <div class="col-12 col-md-8">
+                                                    <label class="form-label fw-medium text-muted">Mật khẩu hiện tại</label>
+                                                    <input type="password" class="form-control form-control-lg rounded-3 shadow-none" placeholder="Nhập mật khẩu đang dùng">
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <label class="form-label fw-medium text-muted">Mật khẩu mới</label>
+                                                    <input type="password" class="form-control form-control-lg rounded-3 shadow-none" placeholder="Tối thiểu 8 ký tự">
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <label class="form-label fw-medium text-muted">Xác nhận mật khẩu mới</label>
+                                                    <input type="password" class="form-control form-control-lg rounded-3 shadow-none" placeholder="Nhập lại mật khẩu mới">
+                                                </div>
+                                            </div>
+                                            <div class="mt-5">
+                                                <button type="button" class="btn btn-dark rounded-pill px-5 fw-bold">Cập nhật mật khẩu</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="tab-notifications" role="tabpanel">
+                                    <div class="bg-white p-4 p-lg-5 rounded-4 border border-secondary-subtle">
+                                        <h5 class="fw-bold text-dark mb-1">Cài đặt thông báo</h5>
+                                        <p class="text-muted mb-4 pb-3 border-bottom">Thiết lập cách hệ thống báo động cho bạn khi có việc mới.</p>
+                                        
+                                        <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom border-light">
+                                            <div>
+                                                <h6 class="fw-bold text-dark mb-1"><i class="fa-solid fa-volume-high text-primary me-2"></i>Âm thanh tin nhắn mới</h6>
+                                                <small class="text-muted">Phát tiếng "Ting" khi khách hàng chat trong mục Hỗ trợ.</small>
+                                            </div>
+                                            <div class="form-check form-switch mb-0">
+                                                <input class="form-check-input shadow-none" type="checkbox" checked>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom border-light">
+                                            <div>
+                                                <h6 class="fw-bold text-dark mb-1"><i class="fa-solid fa-desktop text-secondary me-2"></i>Pop-up yêu cầu hỗ trợ</h6>
+                                                <small class="text-muted">Hiển thị thông báo ở góc phải màn hình dù bạn đang mở Tab khác.</small>
+                                            </div>
+                                            <div class="form-check form-switch mb-0">
+                                                <input class="form-check-input shadow-none" type="checkbox" checked>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <div>
+                                                <h6 class="fw-bold text-dark mb-1"><i class="fa-solid fa-crown text-warning me-2"></i>Pop-up đơn nâng cấp mới</h6>
+                                                <small class="text-muted">Thông báo ngay khi có khách hàng vừa chuyển khoản mua gói.</small>
+                                            </div>
+                                            <div class="form-check form-switch mb-0">
+                                                <input class="form-check-input shadow-none" type="checkbox">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

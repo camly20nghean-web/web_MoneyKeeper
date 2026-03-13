@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nâng cấp Premium - MoneyKeeper</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="../public/css/style.css" rel="stylesheet">
+
+</head>
+<body class="bg-light-gray">
+
+    <div class="container-fluid min-vh-100 overflow-hidden">
+        <div class="row min-vh-100">
+            
+            <div class="col-lg-2 d-none d-lg-flex flex-column bg-sidebar text-white p-4">
+                <div class="mb-5 mt-4">
+                    <h4 class="fw-bold">MoneyKeeper</h4>
+                </div>
+                <nav class="nav flex-column gap-3">
+                    <a href="dashboard.html" class="nav-link text-white"><i class="fa-solid fa-house me-2"></i> Tổng quan</a>
+                    <a href="transactions.html" class="nav-link text-white"><i class="fa-solid fa-money-bill-transfer me-2"></i> Giao dịch</a>
+                    <a href="budget.html" class="nav-link text-white"><i class="fa-solid fa-piggy-bank me-2"></i> Ngân sách</a>
+                    <a href="report.html" class="nav-link text-white"><i class="fa-solid fa-chart-simple me-2"></i> Báo cáo</a>
+                </nav>
+            </div>
+
+            <div class="col-12 p-0 align-self-start d-flex justify-content-between align-items-center bg-sidebar text-white p-3 d-lg-none fixed-top shadow-sm">
+                <h4 class="mb-0 fw-bold">MoneyKeeper</h4>
+                <button class="btn text-white border-0 fs-4 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="mobileMenu" style="width: 280px;">
+                <div class="offcanvas-header border-bottom border-secondary">
+                    <h5 class="offcanvas-title fw-bold">MoneyKeeper</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body px-2 mt-3">
+                    <nav class="nav flex-column gap-2">
+                        <a href="dashboard.html" class="nav-link text-white px-3 py-2"><i class="fa-solid fa-house me-3" style="width: 20px;"></i> Tổng quan</a>
+                        <a href="transactions.html" class="nav-link text-white px-3 py-2"><i class="fa-solid fa-money-bill-transfer me-3" style="width: 20px;"></i> Giao dịch</a>
+                        <a href="budget.html" class="nav-link text-white px-3 py-2"><i class="fa-solid fa-piggy-bank me-3" style="width: 20px;"></i> Ngân sách</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-10 pt-5 mt-4 pt-lg-4 mt-lg-0 p-4 p-lg-5 overflow-auto h-100">
+                
+                <div class="mb-4">
+                    <a href="javascript:history.back()" class="text-decoration-none text-muted fw-medium d-inline-block mb-3 hover-primary">
+                        <i class="fa-solid fa-arrow-left me-2"></i> Quay lại
+                    </a>
+                    <h2 class="fw-bold text-dark d-flex align-items-center gap-3">
+                        <div class="bg-warning bg-opacity-10 text-warning p-2 rounded-circle d-flex justify-content-center align-items-center" style="width: 50px; height: 50px;">
+                            <i class="fa-solid fa-crown fs-4"></i>
+                        </div>
+                        Nâng cấp Premium
+                    </h2>
+                    <p class="text-muted ms-1">Mở khóa toàn bộ tính năng quản lý tài chính chuyên sâu.</p>
+                </div>
+
+                <div class="row g-4 mt-2">
+                    <div class="col-12 col-xl-5">
+                        <h5 class="fw-bold mb-4 text-dark">1. Chọn gói dịch vụ</h5>
+                        
+                        <label class="w-100 mb-3 plan-label" style="cursor: pointer;">
+                            <input type="radio" name="plan" class="d-none" value="499000" onchange="changePlan(499000, 'Premium 1 Năm')" checked>
+                            <div class="p-4 border rounded-4 plan-card bg-white">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold text-dark fs-5">Premium 1 Năm</span>
+                                    <span class="badge bg-danger rounded-pill px-3 py-2">-30%</span>
+                                </div>
+                                <h2 class="fw-bold text-success mb-3">499.000 đ</h2>
+                                <ul class="list-unstyled text-muted mb-0 space-y-2">
+                                    <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Không giới hạn số lượng ví</li>
+                                    <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Chia sẻ ví với gia đình</li>
+                                    <li><i class="fa-solid fa-check text-success me-2"></i> Xuất báo cáo Excel/PDF</li>
+                                </ul>
+                            </div>
+                        </label>
+
+                        <label class="w-100 plan-label" style="cursor: pointer;">
+                            <input type="radio" name="plan" class="d-none" value="299000" onchange="changePlan(299000, 'Premium 6 Tháng')">
+                            <div class="p-4 border rounded-4 plan-card bg-white">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold text-dark fs-5">Premium 6 Tháng</span>
+                                </div>
+                                <h2 class="fw-bold text-success mb-3">299.000 đ</h2>
+                                <ul class="list-unstyled text-muted mb-0 space-y-2">
+                                    <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Đầy đủ tính năng Premium</li>
+                                    <li><i class="fa-solid fa-check text-success me-2"></i> Phù hợp để trải nghiệm</li>
+                                </ul>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="col-12 col-xl-7">
+                        <h5 class="fw-bold mb-4 text-dark">2. Quét mã thanh toán</h5>
+                        
+                        <div class="bg-white p-4 p-lg-5 rounded-4 shadow-sm border border-secondary-subtle text-center h-100 d-flex flex-column align-items-center justify-content-center">
+                            
+                            <p class="text-muted mb-4">Mở App ngân hàng bất kỳ để quét mã VietQR bên dưới</p>
+
+                            <div class="border border-2 border-success border-opacity-25 rounded-4 p-3 mb-4 position-relative" style="background-color: #f8fff9;">
+                                <img id="dynamic-qr-img" src="" alt="Mã QR" width="220" class="img-fluid rounded-3 shadow-sm">
+                                
+                                <div id="success-overlay" class="position-absolute top-0 start-0 w-100 h-100 bg-white bg-opacity-75 d-none flex-column justify-content-center align-items-center rounded-4">
+                                    <i class="fa-solid fa-circle-check text-success" style="font-size: 4rem;"></i>
+                                    <h5 class="fw-bold text-success mt-3">Thành công!</h5>
+                                </div>
+                            </div>
+                            
+                            <div class="w-100 max-w-400 mx-auto bg-light rounded-3 p-3 text-start mb-4 border border-secondary-subtle">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="text-muted">Nội dung CK:</span>
+                                    <strong id="order-code" class="text-danger">MK...</strong>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="text-muted">Số tiền:</span>
+                                    <strong id="order-amount" class="text-dark">499.000 đ</strong>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Ngân hàng:</span>
+                                    <strong class="text-dark">Vietcombank</strong>
+                                </div>
+                            </div>
+
+                            <div id="payment-status" class="bg-warning-subtle text-dark px-4 py-3 rounded-pill border border-warning d-flex align-items-center justify-content-center gap-3 w-100 max-w-400 mx-auto">
+                                <span class="spinner-border spinner-border-sm text-warning" role="status"></span>
+                                <span class="fw-bold">Hệ thống đang chờ nhận tiền...</span>
+                            </div>
+
+                            <button type="button" class="btn btn-sm btn-link text-muted mt-4" onclick="simulateAPISuccess()">[Demo] Bấm vào đây để giả lập chuyển tiền xong</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const BANK_ID = "970436"; 
+        const ACCOUNT_NO = "0123456789"; 
+        const ACCOUNT_NAME = "CTY MONEYKEEPER";
+        
+        function generateOrderCode() {
+            return "MK" + Math.floor(1000 + Math.random() * 9000); 
+        }
+
+        function changePlan(amount, planName) {
+            let orderCode = generateOrderCode();
+            
+            document.getElementById('order-code').innerText = orderCode;
+            document.getElementById('order-amount').innerText = new Intl.NumberFormat('vi-VN').format(amount) + ' đ';
+            
+            let qrUrl = `https://img.vietqr.io/image/${BANK_ID}-${ACCOUNT_NO}-compact2.png?amount=${amount}&addInfo=${orderCode}&accountName=${encodeURIComponent(ACCOUNT_NAME)}`;
+            document.getElementById('dynamic-qr-img').src = qrUrl;
+
+            resetPaymentStatus();
+        }
+
+        function resetPaymentStatus() {
+            document.getElementById('success-overlay').classList.replace('d-flex', 'd-none');
+            let statusDiv = document.getElementById('payment-status');
+            statusDiv.className = "bg-warning-subtle text-dark px-4 py-3 rounded-pill border border-warning d-flex align-items-center justify-content-center gap-3 w-100 max-w-400 mx-auto";
+            statusDiv.innerHTML = `
+                <span class="spinner-border spinner-border-sm text-warning" role="status"></span>
+                <span class="fw-bold">Hệ thống đang chờ nhận tiền...</span>
+            `;
+        }
+
+        function simulateAPISuccess() {
+            document.getElementById('success-overlay').classList.replace('d-none', 'd-flex');
+            
+            let statusDiv = document.getElementById('payment-status');
+            statusDiv.className = "bg-success text-white px-4 py-3 rounded-pill shadow-sm d-flex align-items-center justify-content-center gap-3 w-100 max-w-400 mx-auto";
+            statusDiv.innerHTML = `
+                <i class="fa-solid fa-circle-check fs-5"></i>
+                <span class="fw-bold">Giao dịch đã được xác nhận!</span>
+            `;
+
+            setTimeout(() => {
+                window.location.href = "dashboard.html"; 
+            }, 2500);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            changePlan(499000, 'Premium 1 Năm');
+        });
+    </script>
+</body>
+</html>

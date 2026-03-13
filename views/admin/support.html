@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="../../public/css/style.css" rel="stylesheet">
+
+    <style>
+        /* Hiệu ứng hover cho danh sách chat */
+        .chat-item { transition: all 0.2s ease; cursor: pointer; border-left: 4px solid transparent; }
+        .chat-item:hover { background-color: #f8f9fa; }
+        /* Trạng thái đang chọn (Active Chat) - Lấy màu xanh chủ đạo */
+        .chat-item.active { background-color: #e8f5e9; border-left: 4px solid #00B512; }
+
+        /* Custom thanh cuộn cho danh sách và khung chat */
+        .scroll-area { overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: #ced4da transparent; }
+        .scroll-area::-webkit-scrollbar { width: 6px; }
+        .scroll-area::-webkit-scrollbar-thumb { background-color: #ced4da; border-radius: 10px; }
+
+        /* Khung chứa đoạn chat */
+        .chat-history { height: calc(100vh - 380px); min-height: 400px; display: flex; flex-direction: column; }
+        
+        /* Bong bóng chat (Chat Bubbles) */
+        .msg-bubble { max-width: 75%; padding: 12px 16px; font-size: 0.95rem; line-height: 1.5; position: relative; }
+        
+        /* Tin nhắn của Khách hàng (Bên trái, màu xám) */
+        .msg-in { background-color: #f1f3f5; color: #212529; border-radius: 1rem 1rem 1rem 0; align-self: flex-start; }
+        
+        /* Tin nhắn của Nhân viên (Bên phải, màu xanh) */
+        .msg-out { background-color: #00B512; color: #fff; border-radius: 1rem 1rem 0 1rem; align-self: flex-end; }
+    </style>
+</head>
+<body class="bg-light-gray">
+
+    <div class="container-fluid min-vh-100 overflow-hidden">
+        <div class="row min-vh-100">
+            
+            <div class="col-lg-2 d-none d-lg-flex flex-column bg-sidebar-admin text-white p-4"> 
+                
+                <div class="mb-5 mt-4">
+                    <h4 class="fw-bold">MoneyKeeper</h4>
+                </div>
+
+                <nav class="nav flex-column gap-3">
+                    <a href="dashboard.html" class="nav-link text-white ">
+                        <i class="fa-solid fa-house me-1"></i> Tổng quan
+                    </a>
+                    <a href="users.html" class="nav-link text-white">
+                        <i class="fa-solid fa-users me-1"></i> Người dùng
+                    </a>
+                    <a href="transactions.html" class="nav-link text-white">
+                        <i class="fa-solid fa-money-bill-transfer me-1"></i> Giao dịch hệ thống
+                    </a>
+                    <a href="support.html" class="nav-link text-white bg-white-10 rounded py-2 px-3">
+                        <i class="fa-solid fa-headset fa-fw me-1"></i> Hỗ trợ
+                    </a>
+                    <a href="data.html" class="nav-link  text-white py-2 px-3 ">
+                        <i class="fa-solid fa-database fa-fw me-1"></i> Dữ liệu hệ thống
+                    </a>
+                    <a href="settings.html" class="nav-link text-white mt-auto"> 
+                        <i class="fa-solid fa-gear me-1"></i> Cài đặt
+                    </a>
+                </nav>
+            </div>
+
+            <div class="d-flex fixed-top justify-content-between align-items-center bg-sidebar-admin text-white p-3 d-lg-none">
+                <h4 class="mb-0 fw-bold">MoneyKeeper</h4>
+                <button class="btn text-white border-0 fs-4 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="offcanvas offcanvas-start bg-sidebar-admin text-white" tabindex="-1" id="mobileMenu" style="width: 280px;">
+                <div class="offcanvas-header border-bottom border-secondary">
+                    <h5 class="offcanvas-title fw-bold">MoneyKeeper</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body px-2 mt-3">
+                    <nav class="nav flex-column gap-2">
+                        <a href="dashboard.html" class="nav-link text-white px-3 py-2 rounded-3 fw-medium">
+                            <i class="fa-solid fa-house fa-fw me-2"></i> Tổng quan 
+                        </a>
+                        <a href="users.html" class="nav-link text-white px-3 py-2 rounded-3">
+                            <i class="fa-solid fa-users me-2"></i> Người dùng 
+                        </a>
+                        <a href="transactions.html" class="nav-link text-white px-3 py-2 ">
+                            <i class="fa-solid fa-money-bill-transfer me-2"></i> Giao dịch hệ thống 
+                        </a>
+                         <a href="support.html" class="nav-link text-white px-3 py-2 bg-white-10 rounded-3">
+                            <i class="fa-solid fa-headset fa-fw me-2"></i> Hỗ trợ 
+                        </a>
+                        <a href="data.html" class="nav-link text-white px-3 py-2 ">
+                            <i class="fa-solid fa-database fa-fw me-2"></i> Dữ liệu hệ thống
+                        </a>
+                        <a href="settings.html" class="nav-link text-white px-3 py-2">
+                            <i class="fa-solid fa-gear me-2"></i> Cài đặt 
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-10 p-4 p-lg-5 overflow-auto h-100 mt-5 mt-lg-0">
+                
+                <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3 mt-4 mt-lg-0">
+                    <div>
+                        <h3 class="fw-bold text-dark mb-1">Hỗ trợ khách hàng</h3>
+                        <p class="text-secondary mb-0">Giải đáp thắc mắc và xử lý sự cố cho người dùng</p>
+                    </div>
+                    
+                    <div class="dropdown">
+                            <div class="d-flex align-items-center gap-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+                                <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center text-white fw-bold shadow-sm" style="width: 45px; height: 45px;">
+                                    <i class="fa-solid fa-user-shield"></i>
+                                </div>
+                                <div class="d-none d-md-block text-end">
+                                    <h6 class="mb-0 fw-bold text-dark">Admin Tổng</h6>
+                                    <small class="text-muted">Quản trị viên</small>
+                                </div>
+                            </div>
+                            <ul class="dropdown-menu dropdown-menu-end  border-0 rounded-4 mt-3" style="min-width: 220px;">
+                                <li><a class="dropdown-item py-2 fw-medium text-secondary hover-primary" href="settings.html"><i class="fa-solid fa-gear fa-fw me-2"></i> Cài đặt hệ thống</a></li>
+                                <li><hr class="dropdown-divider my-2"></li>
+                                <li><a class="dropdown-item py-2 fw-bold text-danger hover-danger" href="../login.html"><i class="fa-solid fa-arrow-right-from-bracket fa-fw me-2"></i> Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                </div>
+
+                <div class="bg-white rounded-4 shadow-sm border border-secondary-subtle overflow-hidden">
+                     <div class="row g-0 h-100">
+    
+    <div class="col-12 col-xl-3 border-end border-secondary-subtle d-flex flex-column" style="height: calc(100vh - 220px); min-height: 500px;">
+        <div class="p-3 border-bottom border-secondary-subtle">
+            <div class="position-relative mb-3">
+                <i class="fa-solid fa-magnifying-glass position-absolute text-muted" style="top: 50%; left: 15px; transform: translateY(-50%);"></i>
+                <input type="text" class="form-control rounded-pill ps-5 bg-light border-0 shadow-none" placeholder="Tìm tên khách hàng...">
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-dark rounded-pill px-3 fw-medium">Chờ xử lý <span class="badge bg-danger ms-1">3</span></button>
+                <button class="btn btn-sm btn-light border rounded-pill px-3 text-muted fw-medium">Đã giải quyết</button>
+            </div>
+        </div>
+
+        <div class="scroll-area flex-grow-1">
+            <div class="chat-item active p-3 border-bottom border-secondary-subtle bg-light">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="position-relative">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 45px; height: 45px;">VA</div>
+                        <span class="position-absolute bottom-0 end-0 bg-success border border-white rounded-circle" style="width: 12px; height: 12px;"></span>
+                    </div>
+                    <div class="flex-grow-1 overflow-hidden">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <h6 class="mb-0 fw-bold text-dark text-truncate">Lê Vân Anh</h6>
+                            <small class="text-success fw-bold" style="font-size: 0.7rem;">Vừa xong</small>
+                        </div>
+                        <p class="mb-0 text-dark fw-medium text-truncate" style="font-size: 0.85rem;">Mã là 123456789 nha em.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-item p-3 border-bottom border-secondary-subtle">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="position-relative">
+                        <div class="bg-secondary bg-opacity-25 text-secondary rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 45px; height: 45px;"><i class="fa-solid fa-user"></i></div>
+                        <span class="position-absolute bottom-0 end-0 bg-warning border border-white rounded-circle" style="width: 12px; height: 12px;"></span>
+                    </div>
+                    <div class="flex-grow-1 overflow-hidden">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <h6 class="mb-0 fw-bold text-dark text-truncate">Trần Bảo Kiên</h6>
+                            <small class="text-muted" style="font-size: 0.7rem;">15 phút</small>
+                        </div>
+                        <p class="mb-0 text-dark fw-bold text-truncate" style="font-size: 0.85rem;">Tôi đã chuyển khoản nhưng chưa thấy gói?</p>
+                    </div>
+                    <span class="badge bg-danger rounded-circle p-1" style="width: 20px; height: 20px; font-size: 0.7rem;">1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-xl-6 d-flex flex-column bg-white border-end border-secondary-subtle">
+        
+        <div class="p-3 border-bottom border-secondary-subtle d-flex justify-content-between align-items-center bg-light">
+            <div class="d-flex align-items-center gap-3">
+                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px;">VA</div>
+                <div>
+                    <h6 class="mb-0 fw-bold text-dark">Lê Vân Anh</h6>
+                    <small class="text-success fw-medium"><i class="fa-solid fa-circle text-success" style="font-size: 0.5rem; margin-top: -2px;"></i> Đang hoạt động</small>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-sm btn-outline-success fw-medium rounded-pill px-3 shadow-sm d-none d-sm-inline-block">
+                    <i class="fa-solid fa-check me-1"></i> Đánh dấu đã giải quyết
+                </button>
+            </div>
+        </div>
+
+        <div class="chat-history scroll-area p-4 gap-3 bg-white flex-grow-1 overflow-auto">
+            <div class="text-center mb-4">
+                <span class="badge bg-light text-muted border px-3 py-1 rounded-pill fw-normal">Hôm nay, 10:20</span>
+            </div>
+
+            <div class="d-flex flex-column align-items-start mb-3">
+                <div class="bg-light text-dark p-3 rounded-4 rounded-top-left-0 border border-secondary-subtle" style="max-width: 80%;">
+                    <p class="mb-0 text-dark">Chào admin, mình vừa thanh toán gói Premium 1 năm qua Momo lúc nãy mà mở app lên vẫn thấy báo tài khoản Free. Hệ thống đang bị lỗi hả bạn?</p>
+                </div>
+                <small class="text-muted mt-1 ms-2" style="font-size: 0.75rem;">10:20</small>
+            </div>
+
+            <div class="d-flex flex-column align-items-end mb-3">
+                <div class="bg-primary text-white p-3 rounded-4 rounded-top-right-0" style="max-width: 80%;">
+                    <p class="mb-0">Dạ chào chị Vân Anh. Mình là Thu Hà, hỗ trợ viên của MoneyKeeper. Mình rất xin lỗi vì sự bất tiện này ạ.</p>
+                </div>
+                <div class="bg-primary text-white p-3 rounded-4 rounded-top-right-0 mt-2" style="max-width: 80%;">
+                    <p class="mb-0">Chị vui lòng cho mình xin Mã giao dịch trên Momo để mình kiểm tra đối soát trên hệ thống nhé!</p>
+                </div>
+                <small class="text-muted mt-1 me-2" style="font-size: 0.75rem;">10:23 <i class="fa-solid fa-check-double text-primary ms-1"></i></small>
+            </div>
+
+            <div class="d-flex flex-column align-items-start mb-3">
+                <div class="bg-light text-dark p-3 rounded-4 rounded-top-left-0 border border-secondary-subtle" style="max-width: 80%;">
+                    <p class="mb-0 text-dark">Mã là 123456789 nha em.</p>
+                </div>
+                <small class="text-muted mt-1 ms-2" style="font-size: 0.75rem;">10:25</small>
+            </div>
+        </div>
+
+        <div class="p-3 border-top border-secondary-subtle bg-light mt-auto">
+            <form class="d-flex align-items-center gap-2">
+                <button type="button" class="btn btn-light border-0 text-muted fs-5 shadow-none hover-primary">
+                    <i class="fa-solid fa-paperclip"></i>
+                </button>
+                <input type="text" class="form-control rounded-pill px-4 py-2 border-secondary-subtle shadow-none" placeholder="Nhập tin nhắn trả lời..." autocomplete="off">
+                <button type="submit" class="btn btn-success rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 45px; height: 45px;">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-12 col-xl-3 bg-light d-none d-xl-flex flex-column overflow-auto p-4">
+        
+        <div class="text-center mb-4 pb-4 border-bottom border-secondary-subtle">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold mx-auto mb-3 fs-2 shadow-sm" style="width: 80px; height: 80px;">VA</div>
+            <h5 class="fw-bold text-dark mb-1">Lê Vân Anh</h5>
+            <p class="text-muted small mb-3">vananh.le@gmail.com</p>
+            <span class="badge bg-secondary rounded-pill px-3 py-2 fw-medium">Tài khoản Free</span>
+        </div>
+
+        <h6 class="fw-bold text-secondary mb-3 fs-7 text-uppercase">Thông tin tài khoản</h6>
+        <div class="d-flex justify-content-between mb-2">
+            <span class="text-muted small">Ngày tham gia:</span>
+            <span class="text-dark small fw-medium">10/01/2026</span>
+        </div>
+        <div class="d-flex justify-content-between mb-4">
+            <span class="text-muted small">Lần cuối đăng nhập:</span>
+            <span class="text-dark small fw-medium">Hôm nay</span>
+        </div>
+
+        <h6 class="fw-bold text-secondary mb-3 fs-7 text-uppercase mt-2">Lịch sử giao dịch (Hệ thống)</h6>
+        
+        <div class="bg-white p-3 rounded-4 border border-secondary-subtle mb-3 shadow-sm position-relative">
+            <button class="btn btn-sm btn-success position-absolute rounded-pill px-2 py-1" style="top: -10px; right: -10px; font-size: 0.7rem;" title="Duyệt nhanh gói này">
+                <i class="fa-solid fa-check"></i> Duyệt
+            </button>
+            
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="fw-bold text-dark small">Mua gói Premium 1 Năm</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold text-success mb-0">499.000 đ</h6>
+                <span class="badge bg-warning-subtle text-warning border border-warning-subtle">Chờ đối soát</span>
+            </div>
+            <small class="text-muted d-block mt-2" style="font-size: 0.7rem;">Mã: MK8291 • 15 phút trước</small>
+        </div>
+
+        <div class="bg-white p-3 rounded-4 border border-secondary-subtle opacity-75">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="fw-bold text-dark small">Nâng cấp 1 Tháng</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold text-dark mb-0">49.000 đ</h6>
+                <span class="badge bg-success-subtle text-success border border-success-subtle">Thành công</span>
+            </div>
+            <small class="text-muted d-block mt-2" style="font-size: 0.7rem;">Ngày: 10/01/2026</small>
+        </div>
+
+    </div>
+
+</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

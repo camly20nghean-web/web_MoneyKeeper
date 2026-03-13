@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="../../public/css/style.css" rel="stylesheet">
+
+</head>
+<body class="bg-light">
+
+    <div class="container-fluid min-vh-100 overflow-hidden">
+        <div class="row min-vh-100">
+            
+            <div class="col-lg-2 d-none d-lg-flex flex-column bg-sidebar-admin text-white p-4"> 
+                
+                <div class="mb-5 mt-4">
+                    <h4 class="fw-bold">MoneyKeeper</h4>
+                </div>
+
+                <nav class="nav flex-column gap-3">
+                    <a href="dashboard.html" class="nav-link text-white ">
+                        <i class="fa-solid fa-house me-1"></i> Tổng quan
+                    </a>
+                    <a href="users.html" class="nav-link text-white bg-white-10 rounded">
+                        <i class="fa-solid fa-users me-1"></i> Người dùng
+                    </a>
+                    <a href="transactions.html" class="nav-link text-white">
+                        <i class="fa-solid fa-money-bill-transfer me-1"></i> Giao dịch hệ thống
+                    </a>
+                    <a href="support.html" class="nav-link text-white  py-2 px-3">
+                        <i class="fa-solid fa-headset fa-fw me-1"></i> Hỗ trợ
+                    </a>
+                    <a href="data.html" class="nav-link  text-white py-2 px-3 ">
+                        <i class="fa-solid fa-database fa-fw me-1"></i> Dữ liệu hệ thống
+                    </a>
+                    <a href="settings.html" class="nav-link text-white mt-auto"> 
+                        <i class="fa-solid fa-gear me-1"></i> Cài đặt
+                    </a>
+                </nav>
+            </div>
+<!-- menu -->
+  <div class="d-flex fixed-top justify-content-between align-items-center bg-sidebar-admin text-white p-3 d-lg-none">
+                    <h4 class="mb-0 fw-bold">MoneyKeeper</h4>
+                    <button class="btn text-white border-0 fs-4 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            <!-- end-menu -->
+            <div class="col-12 col-lg-10 p-4 p-lg-5 bg-light-gray overflow-auto h-100">
+
+                <div class="mb-4 mt-5 pt-4 mt-lg-0 pt-lg-0">
+                    <h3 class="fw-bold text-dark mb-4">Danh sách người dùng</h3>
+                    </div>
+                <div class="row mb-4 align-items-start">
+                    <div class="col-lg-4 col-12 mb-3 position-relative ">
+                        <i class="fa-solid fa-magnifying-glass text-muted position-absolute top-50 translate-middle-y ms-3"></i>
+                        <input type="text" class="form-control rounded-pill bg-white border-secondary-subtle ps-5 py-2" placeholder="Tìm kiếm theo tên, email...">
+                    </div>
+                    <div class="col-12 col-lg-5 d-flex align-items-center flex-wrap gap-2 mb-3 mb-lg-0">
+                        <button class="btn bg-white border border-secondary-subtle text-muted rounded-pill py-2 px-4 fw-medium btn-filter">
+                            Tất cả 
+                        </button>
+                        <button class="btn bg-white border border-secondary-subtle text-muted rounded-pill py-2 px-4 fw-medium btn-filter">
+                            Nhân viên 
+                        </button>
+                        <button class="btn bg-white border border-secondary-subtle text-muted rounded-pill py-2 px-4 fw-medium btn-filter">
+                            Khách hàng 
+                        </button>
+                    </div>
+
+                    <div class="col-12 col-lg-3 d-flex justify-content-lg-end">
+                        <button class="btn bg-white-10 rounded-pill d-flex align-items-center gap-2 px-4 py-2 fw-medium " data-bs-toggle="modal" data-bs-target="#addUserModal">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            Thêm người dùng 
+                        </button>
+                    </div>
+                </div>
+                <!-- danh sách người dùng  -->
+                 <div class="mt-4 overflow-x-auto">    
+    
+                <div style="min-width: 700px;">
+
+                    <div class="row mx-0 bg-white py-2 align-items-center text-dark fw-bold rounded-top mb-2 border border-secondary-subtle text-nowrap">
+                        <div class="col-2">Thành viên</div>
+                        <div class="col-2">Gói dịch vụ</div>
+                        <div class="col-2">Vai trò</div>
+                        <div class="col-2">Ngày đăng ký</div>
+                        <div class="col-2">Trạng thái</div>
+                        <div class="col-2 text-center text-nowrap">Hành động</div>
+                    </div>
+
+                    <div class="row mx-0 bg-white py-2 align-items-center text-dark mb-2 border border-secondary-subtle text-nowrap">
+                        <!-- text-nowrap: để các mục trên một hàng mà không bị nhảy dòng  -->
+                        <div class="col-2 text-truncate">Lê Văn Minh</div>
+                        <!-- text-truncate: khi tên dài quá sẽ có ... sau tên -->
+                        <div class="col-2 text-success">Free</div>
+                        <div class="col-2 ">Khách hàng</div>
+                        <div class="col-2 ">02/02/2025</div>
+                        <div class="col-2 text-success">Hoạt động</div>
+                        <div class="col-2 d-flex justify-content-center gap-3">
+                            <i class="fa-solid fa-pen text-secondary hover-primary" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-lock text-secondary hover-danger" style="cursor: pointer;"></i>
+                        </div>
+                    </div>
+
+                    <div class="row mx-0 align-items-center bg-white border border-secondary-subtle py-2 mb-2 text-nowrap">
+                        <div class="col-2 text-dark text-truncate">Nguyễn Thị Hồng Hạnh</div>
+                        <div class="col-2 text-warning">Premium</div>
+                        <div class="col-2">Khách hàng</div>
+                        <div class="col-2 ">12/09/2025</div>
+                        <div class="col-2 text-warning">Chưa kích hoạt</div>
+                        <div class="col-2 d-flex justify-content-center gap-3">
+                            <i class="fa-solid fa-pen text-secondary hover-primary" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-lock text-secondary hover-danger" style="cursor: pointer;"></i>
+                        </div>
+                    </div>
+                    <div class="row mx-0 align-items-center bg-white border border-secondary-subtle py-2 mb-2 text-nowrap">
+                        <div class="col-2 text-dark text-truncate">Trần Văn Minh</div>
+                        <div class="col-2 text-warning"></div>
+                        <div class="col-2">Nhân viên</div>
+                        <div class="col-2 ">12/09/2025</div>
+                        <div class="col-2 text-success">Hoạt động</div>
+                        <div class="col-2 d-flex justify-content-center gap-3">
+                            <i class="fa-solid fa-pen text-secondary hover-primary" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-lock text-secondary hover-danger" style="cursor: pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- end- cột 2 -->
+
+           
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start bg-sidebar-admin text-white" tabindex="-1" id="mobileMenu" style="width: 280px;">
+                    <div class="offcanvas-header border-bottom border-secondary">
+                        <h5 class="offcanvas-title fw-bold">MoneyKeeper</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                    </div>
+                    <div class="offcanvas-body px-2 mt-3">
+                        <nav class="nav flex-column gap-2">
+                            <a href="dashboard.html" class="nav-link text-white px-3 py-2 fw-medium">
+                                <i class="fa-solid fa-house fa-fw me-2"></i> Tổng quan 
+                            </a>
+                            <a href="users.html" class="nav-link text-white px-3 py-2 rounded-3 bg-white-10">
+                                <i class="fa-solid fa-users me-2"></i> Người dùng 
+                            </a>
+                            <a href="transactions.html" class="nav-link text-white px-3 py-2 ">
+                                <i class="fa-solid fa-money-bill-transfer me-2"></i> Giao dịch hệ thống 
+                            </a>
+                            <a href="support.html" class="nav-link text-white px-3 py-2">
+                                <i class="fa-solid fa-headset fa-fw me-2"></i> Hỗ trợ 
+                            </a>
+                            <a href="data.html" class="nav-link text-white px-3 py-2">
+                            <i class="fa-solid fa-database fa-fw me-2"></i> Dữ liệu hệ thống
+                        </a>
+                            <a href="settings.html" class="nav-link text-white px-3 py-2">
+                                <i class="fa-solid fa-gear me-2"></i> Cài đặt 
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+   <!-- form -->
+<div class="modal fade" id="addUserModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        
+        <div class="modal-content rounded-4 border-0 shadow-lg">
+            
+            <div class="modal-header border-bottom pb-2 mt-2 mx-3">
+                <h4 class="modal-title fw-bold text-dark" id="addUserModalLabel">Thêm người dùng mới</h4>
+                <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body p-4 mx-2">
+                <form id="UserForm" action="">
+                    <div class="row g-4">
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label fw-medium text-muted mb-1">Họ và tên <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control form-control-lg rounded-3 shadow-none" required placeholder="Nhập họ và tên">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label fw-medium text-muted mb-1">Email <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control form-control-lg rounded-3 shadow-none" required placeholder="nguyenvana@gmail.com">
+                                </div>
+
+                        <div class="col-12 col-md-6">
+                            <label class="form-label fw-medium text-muted mb-1">Vai trò</label>
+                            <select class="form-select form-select-lg rounded-3 shadow-none" required>
+                                <option value="" disabled selected>-- Chọn vai trò --</option>
+                                <option value="staff" class="text-dark">Nhân viên</option>
+                                <option value="customer" class="text-dark">Khách hàng</option>
+                                <option value="admin" class="text-dark fw-bold">Quản trị viên</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-12 col-md-6">
+                            <label class="form-label fw-medium text-muted mb-1">Trạng thái</label>
+                            <select class="form-select form-select-lg rounded-3 shadow-none" required>
+                                <option value="" disabled selected>-- Chọn trạng thái --</option>
+                                <option value="hoat_dong" class="text-success fw-medium">Hoạt động</option>
+                                <option value="chua_kich_hoat" class="text-warning fw-medium">Chưa kích hoạt</option>
+                                <option value="da_khoa" class="text-danger fw-medium">Đã khóa</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label class="form-label fw-medium text-muted mb-1">Gói dịch vụ</label>
+                            <select class="form-select form-select-lg rounded-3 shadow-none" required>
+                                <option value="" disabled selected>-- Chọn gói --</option>
+                                <option value="free" class="text-secondary fw-medium">Free</option>
+                                <option value="premium" class="text-warning fw-medium">Premium</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label class="form-label fw-medium text-muted mb-1">Ngày đăng ký</label>
+                            <input type="date" class="form-control form-control-lg rounded-3" required>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer border-0 pt-3 pb-4 px-4 mt-2 ">
+                <button type="button" class="btn btn-white border border-secondary-subtle rounded-pill px-4 fw-medium text-muted" data-bs-dismiss="modal">Hủy bỏ</button>
+                <button type="submit" form="UserForm" class="btn btn-success rounded-pill px-5 fw-medium">Lưu lại</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    
+    // ... (Code tạo năm và biểu đồ của bạn giữ nguyên ở đây) ...
+
+    // ==========================================
+    // 3. XỬ LÝ ACTIVE CHO CÁC NÚT LỌC (Tất cả, Nhân viên, Khách hàng)
+    // ==========================================
+    const filterButtons = document.querySelectorAll('.btn-filter');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            
+            // BƯỚC A: Xóa trạng thái Active của TẤT CẢ các nút trước
+            filterButtons.forEach(btn => {
+                // Rút lại màu đen và bóng đổ
+                btn.classList.remove('btn-dark', 'border-dark');
+                // Trả về giao diện màu trắng mờ nhạt
+                btn.classList.add('bg-white', 'border-secondary-subtle', 'text-muted');
+            });
+
+            // BƯỚC B: Bật trạng thái Active cho ĐÚNG CÁI NÚT VỪA ĐƯỢC CLICK
+            // Xóa đi giao diện màu trắng mờ nhạt
+            this.classList.remove('bg-white', 'border-secondary-subtle', 'text-muted');
+            // Đắp màu đen và bóng đổ vào
+            this.classList.add('btn-dark', 'border-dark');
+        });
+    });
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+/* 1. Thiết lập chung */
+body {
+    font-family: 'Segoe UI', sans-serif; /* Font chữ hiện đại */
+}
+.mt-64{
+    margin-top: 64px;
+}
+
+#hero {
+    /* Tạo màu nền chuyển sắc từ Xanh Đậm -> Xanh Nhạt hơn */
+    background: linear-gradient(135deg, #023e42 0%, #00695c 100%);
+    /* Chiều cao tối thiểu bằng 100% màn hình thiết bị */
+    min-height: 100vh; 
+    /* Đẩy nội dung xuống một chút để không bị thanh Menu che mất */
+    padding-top: 80px; 
+}
+/* 3. Chỉnh lại thanh Menu cho trong suốt */
+.navbar {
+    /* Hiệu ứng kính mờ (Glassmorphism) */
+    background: rgba(2, 62, 66); 
+}
+/* Khi một mục menu được kích hoạt (Active) */
+.navbar-nav .nav-link.active {
+    color: #ffc107 !important; /* Màu vàng (text-warning) */
+    font-weight: bold;         /* In đậm */
+    border-bottom: 2px solid #ffc107; /* (Tùy chọn) Thêm gạch chân cho xịn */
+}
+/* --- MOBILE MENU PRO STYLE --- */
+@media (max-width: 991px) {
+    
+    /* 1. Tạo khoảng hở cho cả khối menu để không dính sát lề */
+    .navbar-collapse {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 20px;
+        background: rgba(15, 32, 39, 0.95); /* Đảm bảo nền tối đồng bộ */
+    }
+
+    /* 2. Biến từng link thành một hàng ngang có gạch chân mờ */
+    .navbar-nav .nav-link {
+        width: 100%;             /* Chiếm hết chiều ngang để bấm vào đâu cũng trúng */
+        padding: 15px 0;         /* Tạo độ thoáng trên dưới */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Đường kẻ mờ sang trọng */
+        font-size: 1.1rem;       /* Chữ to lên một chút cho dễ bấm */
+    }
+
+    /* Xóa gạch chân ở mục cuối cùng cho đẹp */
+    .navbar-nav .nav-item:last-child .nav-link {
+        border-bottom: none;
+    }
+
+    /* 3. Xử lý nút Đăng Nhập cho hoành tráng */
+    /* Tìm nút đăng nhập bên trong nav-item cuối cùng */
+    .navbar-nav .btn {
+        width: 100%;             /* Nút dài hết màn hình */
+        margin-top: 20px;        /* Cách xa các link bên trên */
+        text-align: center;      /* Chữ căn giữa nút */
+        padding: 12px;           /* Nút dày dặn hơn */
+    }
+}
+.btn-custom {
+    padding: 12px 20px;
+    background-color: #00B512; /* Màu bạn yêu cầu */
+    border-color: #00B512;     /* Viền cùng màu */
+    color: white;              /* Chữ màu trắng */
+    transition: all 0.3s;      /* Hiệu ứng chuyển màu mượt mà */
+}
+.btn-custom:hover {
+    background-color: #00940f; /* Màu xanh đậm hơn chút */
+    border-color: #00940f;
+    color: white;
+    transform: translateY(-2px); /* Nút nảy lên nhẹ */
+}
+/* 2. Hiệu ứng ảnh bay bay (Floating Animation) */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); } /* Bay lên 20px */
+    100% { transform: translateY(0px); }
+}
+
+.animation-float {
+    animation: float 4s ease-in-out infinite; /* Lặp lại mãi mãi */
+}
+/* Màu nền xanh nhạt cho tính năng đang chọn */
+.bg-success-subtle {
+    background-color: #e8f5e9 !important; /* Màu xanh lá cực nhạt */
+}
+
+/* Hiệu ứng khi di chuột vào các ô tính năng bình thường */
+/* Khi di chuột vào ô div có class shadow-sm, nó sẽ nổi lên */
+.shadow-sm:hover {
+    transform: translateY(-5px); /* Bay lên 5px */
+    transition: transform 0.3s ease; /* Mượt mà */
+    border-color: #198754 !important; /* Đổi viền thành màu xanh */
+}
+/* Màu nền riêng cho khối CTA */
+.bg-cta {
+    /* Màu chuyển từ Xanh đen -> Xanh rêu tối */
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 100%);
+    
+    /* Tạo hiệu ứng bóng đổ nhẹ cho cả khối để nó nổi lên khỏi nền trắng */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+
+}
+/* --- Xử lý ảnh điện thoại Responsive --- */
+.cta-phone-img {
+    width: 80%;       /* Mặc định trên Mobile là rộng 80% */
+    margin-bottom: -25px; /* Thụt xuống một chút */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Từ Tablet và PC trở lên (Màn hình > 768px) */
+@media (min-width: 768px) {
+    .cta-phone-img {
+        width: 80%;       /* Cho ảnh to ra */
+        margin-bottom: -50px; /* Thụt sâu xuống đáy hơn */
+    }
+}
+
+/* --- Footer Styling --- */
+.footer-link {
+    transition: color 0.3s ease; /* Hiệu ứng chuyển màu mượt */
+    font-weight: 500; 
+}
+
+/* Khi di chuột vào link footer */
+.footer-link:hover {
+    color: #198754 !important; /* Đổi sang màu xanh lá (Success) */
+    text-decoration: underline !important; /* Gạch chân */
+}
+.bg-login-image {
+    background: linear-gradient(158deg, #12A3C0 0%, #00565F 100%);    /* Hoặc dùng màu trơn nếu muốn: background-color: #004d40; */
+    overflow: hidden; /* Để hiệu ứng trang trí không bị tràn ra ngoài */
+}
+.login-3d-img{
+    width: 400px;
+    height: auto;
+}
+/* --- LOGIN FORM CUSTOM --- */
+
+/* Màu chữ xanh đặc trưng */
+.text-teal {
+    color: #00565F !important;
+}
+
+/* Nút bấm xanh đặc trưng */
+.btn-teal {
+    background-color: #00565F; /* Màu xanh đậm */
+    border: none;
+    transition: all 0.3s ease;
+
+}
+
+.btn-teal:hover {
+    background-color: #12A3C0; /* Di chuột vào thì sáng lên (màu xanh ngọc) */
+    transform: translateY(-2px); /* Nảy lên nhẹ */
+    box-shadow: 0 10px 20px rgba(0, 86, 95, 0.3) !important;
+}
+
+.form-control:focus {
+    border-color: #12A3C0; /* Viền xanh khi nhập */
+    box-shadow: 0 0 0 0.25rem rgba(18, 163, 192, 0.25); /* Hào quang xanh */
+}
+/* --- DASHBOARD STYLES --- */
+
+/* 1. Màu nền Sidebar (Xanh Teal đậm) */
+.bg-sidebar {
+    background-color: #00656A; /* Hoặc dùng mã màu #00565F giống Login */
+}
+.bg-sidebar-admin {
+    background-color: #1E293B; /* Hoặc dùng mã màu #00565F giống Login */
+}
+
+/* 2. Màu nền Main Content (Xám rất nhạt - dịu mắt) */
+.bg-light-gray {
+    background-color: #F5F7FA;
+}
+
+/* 3. Hiệu ứng menu active (Nền trắng mờ) */
+.bg-white-10 {
+    background-color: #00B512;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.bg-white-10:hover {
+    background-color: #00960F;
+}
+.bg-card-balance {
+    background-color: rgba(0, 181, 18, 0.25) !important; /* Mã màu chuẩn Figma */
+    border-radius: 15px !important; /* Bo góc chuẩn Figma */
+}
+/* Thẻ Tổng thu nhập (Màu tím) */
+.bg-card-income {
+    /* Chuyển mã #5726C9 thành rgba với 20% độ trong suốt */
+    background-color: rgba(87, 38, 201, 0.20) !important; 
+    border-radius: 15px !important;
+}
+/* Thẻ Tổng chi tiêu (Màu đỏ) */
+.bg-card-expense {
+    /* Chuyển mã #DF2424 thành rgba với 25% độ trong suốt */
+    background-color: rgba(223, 36, 36, 0.25) !important; 
+    border-radius: 15px !important;
+}
+.bg-visa{
+    background-color: #004E92;
+}
+/* 5. Cố định chiều cao để scroll độc lập (Quan trọng cho Dashboard) */
+.h-100 {
+    height: 100% !important;
+}
+/* Mặc định trên điện thoại (Mobile First): Rộng 100% */
+.visa-responsive {
+    width: 100%;
+}
+/* Khi màn hình từ iPad (md - 768px) trở lên: Khóa cứng ở 300px */
+@media (min-width: 768px) {
+    .visa-responsive {
+        width: 300px;
+    }
+}
+/* Hiệu ứng khi rê chuột vào Cây bút (Sửa) - Đổi sang màu xanh */
+.hover-primary:hover {
+    color: #0d6efd !important; 
+    transform: scale(1.1); /* Phóng to lên một xíu cho sinh động */
+    transition: all 0.2s ease-in-out; /* Làm mượt chuyển động */
+}
+
+/* Hiệu ứng khi rê chuột vào Thùng rác (Xóa) - Đổi sang màu đỏ */
+.hover-danger:hover {
+    color: #dc3545 !important;
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Đảm bảo trạng thái bình thường cũng có transition để lúc chuột rời đi nó thu lại mượt mà */
+.hover-primary, .hover-danger {
+    transition: all 0.2s ease-in-out;
+}
+/* Hiệu ứng hover mượt mà cho các nút lọc chưa active */
+.btn-filter:not(.btn-dark) {
+    transition: all 0.3s ease; /* Chuyển màu từ từ trong 0.3s */
+}
+
+.btn-filter:not(.btn-dark):hover {
+    background-color: #454e57 !important; /* Đổi nền thành xám rất nhạt */
+    color: #e4ebeb !important; /* Chữ đậm lên thành màu đen */
+    border-color: #adb5bd !important; /* Viền đậm lên một chút */
+}
+ /* Hiệu ứng hover cho danh sách chat */
+        .chat-item { transition: all 0.2s ease; cursor: pointer; border-left: 4px solid transparent; }
+        .chat-item:hover { background-color: #f8f9fa; }
+        /* Trạng thái đang chọn (Active Chat) - Lấy màu xanh chủ đạo */
+        .chat-item.active { background-color: #e8f5e9; border-left: 4px solid #00B512; }
+
+        /* Custom thanh cuộn cho danh sách và khung chat */
+        .scroll-area { overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: #ced4da transparent; }
+        .scroll-area::-webkit-scrollbar { width: 6px; }
+        .scroll-area::-webkit-scrollbar-thumb { background-color: #ced4da; border-radius: 10px; }
+
+        /* Khung chứa đoạn chat */
+        .chat-history { height: calc(100vh - 380px); min-height: 400px; display: flex; flex-direction: column; }
+        
+        /* Bong bóng chat (Chat Bubbles) */
+        .msg-bubble { max-width: 75%; padding: 12px 16px; font-size: 0.95rem; line-height: 1.5; position: relative; }
+        
+        /* Tin nhắn của Khách hàng (Bên trái, màu xám) */
+        .msg-in { background-color: #f1f3f5; color: #212529; border-radius: 1rem 1rem 1rem 0; align-self: flex-start; }
+        
+        /* Tin nhắn của Nhân viên (Bên phải, màu xanh) */
+        .msg-out { background-color: #00B512; color: #fff; border-radius: 1rem 1rem 0 1rem; align-self: flex-end; }
+         .plan-label input:checked + .plan-card {
+            border-color: #198754 !important; /* Đổi viền thành màu xanh lá */
+            background-color: #e8f5e9 !important; /* Nền xanh nhạt */
+            opacity: 1 !important;
+            transform: scale(1.02);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        }
+        .plan-label input:not(:checked) + .plan-card {
+            border-color: #dee2e6 !important;
+            background-color: #fff !important;
+            opacity: 0.6;
+        }
+        .plan-card {
+            transition: all 0.2s ease-in-out;
+        }
